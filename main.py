@@ -167,4 +167,5 @@ def callback_inline(call):
 
 
 
-bot.polling(non_stop=True)
+if __name__ == '__main__':
+    bot.infinity_polling()
