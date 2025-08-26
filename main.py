@@ -163,7 +163,6 @@ def callback_inline(call):
 
         bot.edit_message_reply_markup(call.message.chat.id, call.message.message_id, reply_markup=None)
 
+#if __name__ == '__main__':
+#    bot.infinity_polling()
 
-
-if __name__ == '__main__':
-    bot.infinity_polling()
