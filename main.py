@@ -3,7 +3,8 @@
 from config import cnfg, bot, texts
 from functions import reply_btn_create, work_menu, find_user_num, login, chatting, portfolio_check, send_bot_link, shearling_everyone, change, plan_rehost, inline_btn_create
 
-
+import threading
+from flask import Flask
 
 @bot.message_handler(commands=['start'])
 def greeting(message):
@@ -167,5 +168,34 @@ def callback_inline(call):
 
 
 
+# if __name__ == '__main__':
+#     bot.infinity_polling()
+
+def run_bot():
+    print("Запуск телеграм-бота...")
+    try:
+        bot.infinity_polling()
+    except Exception as e:
+        print(f"Ошибка в боте: {e}")
+
+# Создаем Flask приложение для занятия порта
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return "Telegram Bot is running!"
+
+@app.route('/health')
+def health_check():
+    return "OK", 200
+
+# Запускаем бот в отдельном потоке
 if __name__ == '__main__':
-    bot.infinity_polling()
+    # Запускаем бота в фоновом потоке
+    bot_thread = threading.Thread(target=run_bot)
+    bot_thread.daemon = True
+    bot_thread.start()
+    
+    # Запускаем Flask сервер на порту, который ожидает Render
+    port = int(os.environ.get('PORT', 10000))
+    app.run(host='0.0.0.0', port=port)
