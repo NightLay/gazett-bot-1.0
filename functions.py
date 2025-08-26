@@ -169,4 +169,5 @@ def inline_btn_create(btn_cnt, btn_text, btn_clbc):
     for i in range(0, btn_cnt):
         btn = types.InlineKeyboardButton(text=btn_text.split('/')[i], callback_data=btn_clbc.split('/')[i])
         markup.add(btn)
+
     return markup
