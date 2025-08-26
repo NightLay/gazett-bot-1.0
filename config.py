@@ -1,9 +1,9 @@
 
 import telebot
-
+import os
 
 token = "8049800117:AAF9nnxShWOhvlPrWWmzZ55ImrQJcwkM-hc"
-bot = telebot.TeleBot(token)
+bot = telebot.TeleBot(os.getenv('token'))
 
 
 texts = ["Ты выбрал написать письмо\nМожешь написать всё что хочешь: вопросы, пожелания, предложения рекламы, анекдотов или тем для других рубрик", \
@@ -46,5 +46,6 @@ class Config:
         self.birthdays = []
         self.usernames = []
         self.black_list = []
+
 
 cnfg = Config()
