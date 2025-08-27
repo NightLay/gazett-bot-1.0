@@ -28,6 +28,13 @@ def greeting(message):
 def message_checking(message):
     chat_id = message.chat.id
     msg_text = message.text
+    
+    if not chat_id in cnfg.users:
+        cnfg.users.append(chat_id)
+        cnfg.names.append('-')
+        cnfg.sexes.append('-')
+        cnfg.birthdays.append('-')
+        cnfg.usernames.append('@' + message.from_user.username)
 
     if chat_id != cnfg.MY_ID and cnfg.REHOST_FLAG == False and not chat_id in cnfg.black_list:
         user_num = find_user_num(chat_id)
@@ -165,5 +172,6 @@ def callback_inline(call):
 
 if __name__ == '__main__':
     bot.infinity_polling()
+
 
 
