@@ -20,6 +20,8 @@ def greeting(message):
         else:
             bot.send_message(chat_id, 'Добро пожаловать в нашего бота')
             work_menu(chat_id)
+    else:
+        work_menu(chat_id)
 
 
 
@@ -177,3 +179,4 @@ def callback_inline(call):
 
 if __name__ == '__main__':
     bot.infinity_polling()
+
