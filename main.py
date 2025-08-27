@@ -1,5 +1,4 @@
 
-
 from config import cnfg, bot, texts
 from functions import reply_btn_create, work_menu, find_user_num, login, chatting, portfolio_check, send_bot_link, shearling_everyone, change, plan_rehost, inline_btn_create
 
@@ -170,8 +169,11 @@ def callback_inline(call):
 
         bot.edit_message_reply_markup(call.message.chat.id, call.message.message_id, reply_markup=None)
 
+
+
+
+
+
+
 if __name__ == '__main__':
     bot.infinity_polling()
-
-
-
